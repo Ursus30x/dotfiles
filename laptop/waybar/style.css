@@ -1,6 +1,6 @@
 * {
     /* `otf-font-awesome` and SpaceMono Nerd Font are required to be installed for icons */
-    font-family: Propo, Helvetica, Arial, sans-serif;
+    font-family: Arial, sans-serif;
     font-size: 15px;
     transition: background-color .3s ease-out;
 }
@@ -76,7 +76,8 @@ workspaces {
 }
 
 #custom-separator{
-    font-size: 20px;
+    font-size: 25px;
+    padding: 0 2px;
 }
 
 #custom-arch {
@@ -86,4 +87,28 @@ workspaces {
 }
 #custom-arch:hover {
     color: #1793d1;
+}
+
+
+#power {
+    font-size: 16px;
+    padding: 0 3px;
+}
+
+#power *{
+    font-size: 16px;
+}
+
+#custom-power{
+    padding-right: 5px;
+    padding-left: 0px;
+}
+
+#custom-reboot, 
+#custom-lock{
+    padding: 0 8px;
+}
+
+#custom-quit{
+    padding-right: 8px;
 }
