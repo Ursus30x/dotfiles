@@ -56,10 +56,13 @@
     },
     "custom/pacman_updates": {
         "exec": "~/.config/waybar/pacman_updates.sh",
+        "exec-on-event": "~/.config/waybar/pacman_updates.sh",
         "format": "󰮯  {}",
         "interval": 7200,
         "return-type": "json",
-        "on-click": "~/.config/waybar/pacman_update_run.sh"
+        "on-click-left": "~/.config/waybar/pacman_update_run.sh",
+        "on-click-right": "~/.config/waybar/pacman_updates.sh"
+
     },
     "idle_inhibitor": {
         "format": "{icon}",
