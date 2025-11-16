@@ -1,0 +1,89 @@
+* {
+    /* `otf-font-awesome` and SpaceMono Nerd Font are required to be installed for icons */
+    font-family: Propo, Helvetica, Arial, sans-serif;
+    font-size: 15px;
+    transition: background-color .3s ease-out;
+}
+
+window#waybar {
+    background: rgba(26, 27, 38, 0);
+    color: #c0caf5;
+    font-family: 
+        SpaceMono Nerd Font;
+    transition: background-color .5s;
+}
+
+.modules-left,
+.modules-center,
+.modules-right
+{
+    background: rgba(0, 0, 8, .7);
+    margin: 5px 5px;
+    border-radius: 10px;
+    padding: 0 7px;
+}
+
+
+
+.modules-left * {
+    padding: 0 4px;
+}
+
+.modules-center * {
+    padding: 0 1px;
+}
+
+.modules-right * {
+    padding: 0 4px;
+}
+
+
+workspaces {
+    padding: 0px 5px;
+}
+#workspaces button {
+    all:unset;
+    padding: 0px 5px;
+    color: alpha(#fd1b90,.4);
+    transition: all .2s ease;
+}
+#workspaces button:hover {
+    color:rgba(0,0,0,0);
+    border: none;
+    text-shadow: 0px 0px 1.5px alpha(#fd1b90, .5);
+    transition: all 1s ease;
+}
+#workspaces button.active {
+    color: #fd1b90;
+    border: none;
+    text-shadow: 0px 0px 2px rgba(0, 0, 0, .5);
+}
+#workspaces button.empty {
+    color: rgba(0,0,0,0);
+    border: none;
+    text-shadow: 0px 0px 1.5px rgba(0, 0, 0, .2);
+}
+#workspaces button.empty:hover {
+    color: rgba(0,0,0,0);
+    border: none;
+    text-shadow: 0px 0px 1.5px alpha(#fd1b90, .5);
+    transition: all 1s ease;
+}
+#workspaces button.empty.active {
+    color: #fd1b90;
+    border: none;
+    text-shadow: 0px 0px 2px alpha(#fd1b90, .5);
+}
+
+#custom-separator{
+    font-size: 20px;
+}
+
+#custom-arch {
+    padding-right: 5px;
+    font-size: 20px;
+    transition: color .5s;
+}
+#custom-arch:hover {
+    color: #1793d1;
+}
