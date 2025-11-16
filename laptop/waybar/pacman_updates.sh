@@ -11,7 +11,7 @@ code=$?
 
 # exit code 2 → no updates
 if [ $code -eq 2 ]; then
-  echo '{"text":"no package updates","tooltip":"System up to date"}'
+  echo '{"text":" all packages up to date","tooltip":"System up to date"}'
   exit 0
 fi
 
@@ -26,4 +26,4 @@ fi
 tooltip=$(printf "%s" "$updates" \
     | sed 's/\\/\\\\/g; s/"/\\"/g; :a;N;$!ba;s/\n/\\n/g')
 
-echo "{\"text\":\"new package updates\",\"tooltip\":\"$tooltip\"}"
+echo "{\"text\":\"updates available\",\"tooltip\":\"$tooltip\"}"
