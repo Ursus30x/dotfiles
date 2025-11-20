@@ -1,5 +1,11 @@
 #!/usr/bin/env bash
 
+# check internet connection first
+if ! ping -c1 -W1 8.8.8.8 >/dev/null 2>&1; then
+  echo '{"text":"no internet","tooltip":"No internet connection"}'
+  exit 0
+fi
+
 # make sure pacman-contrib is installed
 if ! command -v checkupdates >/dev/null 2>&1; then
   echo '{"text":"error","tooltip":"checkupdates command not found"}'
@@ -22,7 +28,6 @@ if [ $code -eq 1 ]; then
 fi
 
 # exit code 0 → updates available
-# escape characters for JSON
 tooltip=$(printf "%s" "$updates" \
     | sed 's/\\/\\\\/g; s/"/\\"/g; :a;N;$!ba;s/\n/\\n/g')
 

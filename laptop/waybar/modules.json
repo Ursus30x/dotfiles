@@ -56,11 +56,10 @@
     },
     "custom/pacman_updates": {
         "exec": "~/.config/waybar/pacman_updates.sh",
-        "exec-on-event": "~/.config/waybar/pacman_updates.sh",
         "format": "󰮯  {}",
         "interval": 7200,
         "return-type": "json",
-        "on-click-left": "~/.config/waybar/pacman_update_run.sh",
+        "on-click": "~/.config/waybar/pacman_update_run.sh",
         "on-click-right": "~/.config/waybar/pacman_updates.sh"
 
     },
@@ -90,13 +89,11 @@
         "on-click": "pwvucontrol"
     },
     "network": {
-        "format-alt": "   {essid} ({signalStrength}%)",
-        "format-wifi": "   ({signalStrength}%)",
+        "format-wifi": "   {signalStrength}%",
 	    "format-ethernet": "{ipaddr}/{cidr} ",
-        "tooltip-format": "{ifname} via {gwaddr} ",
-        "format-linked": "{ifname} (No IP) ",
+        "tooltip-format": "{essid}",
         "format-disconnected": "Disconnected ⚠",
-	"on-click": "sh ~/scripts/rofi-wifi-menu/rofi-wifi-menu.sh"
+	"on-click": "kitty -e bash -c impala"
     },
     "cpu": {
         "format": "  {usage}%",

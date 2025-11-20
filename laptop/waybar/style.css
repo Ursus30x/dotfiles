@@ -1,29 +1,47 @@
+/* ========================= */
+/*        COLOR SETUP        */
+/* ========================= */
+
+@define-color bg_main alpha(#0D0837, 0);
+@define-color bg_module alpha(#0D0837, 0.7);
+
+/* 0D0837 */
+
+@define-color primary #c0caf5;
+
+@define-color accent #E7136F;
+@define-color accent_dim rgba(0,0,0,0);
+@define-color accent_hover alpha(#BA1058, .5);
+@define-color accent_shadow alpha(#060614, .4);
+
+@define-color arch_hover #E7136F;
+
+
+/* ========================= */
+/*         WAYBAR UI         */
+/* ========================= */
+
 * {
-    /* `otf-font-awesome` and SpaceMono Nerd Font are required to be installed for icons */
     font-family: Arial, sans-serif;
     font-size: 15px;
     transition: background-color .3s ease-out;
 }
 
 window#waybar {
-    background: rgba(26, 27, 38, 0);
-    color: #c0caf5;
-    font-family: 
-        SpaceMono Nerd Font;
+    background: @bg_main;
+    color: @primary;
+    font-family: SpaceMono Nerd Font;
     transition: background-color .5s;
 }
 
 .modules-left,
 .modules-center,
-.modules-right
-{
-    background: rgba(0, 0, 8, .7);
+.modules-right {
+    background: @bg_module;
     margin: 5px 5px;
     border-radius: 10px;
     padding: 0 7px;
 }
-
-
 
 .modules-left * {
     padding: 0 4px;
@@ -38,44 +56,59 @@ window#waybar {
 }
 
 
+/* ========================= */
+/*        WORKSPACES         */
+/* ========================= */
+
 workspaces {
     padding: 0px 5px;
 }
+
 #workspaces button {
-    all:unset;
+    all: unset;
     padding: 0px 5px;
-    color: alpha(#fd1b90,.4);
+    color: alpha(@accent, .4);
     transition: all .2s ease;
 }
+
 #workspaces button:hover {
-    color:rgba(0,0,0,0);
+    color: @accent_dim;
     border: none;
-    text-shadow: 0px 0px 1.5px alpha(#fd1b90, .5);
+    text-shadow: 0px 0px 1.5px alpha(@accent, .5);
     transition: all 1s ease;
-}
-#workspaces button.active {
-    color: #fd1b90;
-    border: none;
-    text-shadow: 0px 0px 2px rgba(0, 0, 0, .5);
-}
-#workspaces button.empty {
-    color: rgba(0,0,0,0);
-    border: none;
-    text-shadow: 0px 0px 1.5px rgba(0, 0, 0, .2);
-}
-#workspaces button.empty:hover {
-    color: rgba(0,0,0,0);
-    border: none;
-    text-shadow: 0px 0px 1.5px alpha(#fd1b90, .5);
-    transition: all 1s ease;
-}
-#workspaces button.empty.active {
-    color: #fd1b90;
-    border: none;
-    text-shadow: 0px 0px 2px alpha(#fd1b90, .5);
 }
 
-#custom-separator{
+#workspaces button.active {
+    color: @accent;
+    border: none;
+    text-shadow: 0px 0px 2px @accent_hover;
+}
+
+#workspaces button.empty {
+    color: @accent_dim;
+    border: none;
+    text-shadow: 0px 0px 1.5px @accent_shadow;
+}
+
+#workspaces button.empty:hover {
+    color: @accent_dim;
+    border: none;
+    text-shadow: 0px 0px 1.5px alpha(@accent, .5);
+    transition: all 1s ease;
+}
+
+#workspaces button.empty.active {
+    color: @accent;
+    border: none;
+    text-shadow: 0px 0px 2px alpha(@accent, .5);
+}
+
+
+/* ========================= */
+/*        CUSTOM ITEMS       */
+/* ========================= */
+
+#custom-separator {
     font-size: 25px;
     padding: 0 2px;
 }
@@ -85,30 +118,30 @@ workspaces {
     font-size: 20px;
     transition: color .5s;
 }
-#custom-arch:hover {
-    color: #1793d1;
-}
 
+#custom-arch:hover {
+    color: @arch_hover;
+}
 
 #power {
     font-size: 16px;
     padding: 0 3px;
 }
 
-#power *{
+#power * {
     font-size: 16px;
 }
 
-#custom-power{
+#custom-power {
     padding-right: 5px;
     padding-left: 0px;
 }
 
-#custom-reboot, 
-#custom-lock{
+#custom-reboot,
+#custom-lock {
     padding: 0 8px;
 }
 
-#custom-quit{
+#custom-quit {
     padding-right: 8px;
 }

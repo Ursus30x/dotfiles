@@ -21,8 +21,8 @@
         "memory",
         "temperature",
 	    "custom/separator",
+        "battery",
         "custom/power_now",
-	    "battery",
         "custom/separator",
 	    "clock",
         "group/power"
