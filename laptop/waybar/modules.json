@@ -57,7 +57,7 @@
     "custom/pacman_updates": {
         "exec": "~/.config/waybar/pacman_updates.sh",
         "format": "󰮯  {}",
-        "interval": 7200,
+        "interval": 600,
         "return-type": "json",
         "on-click": "~/.config/waybar/pacman_update_run.sh",
         "on-click-right": "~/.config/waybar/pacman_updates.sh"
