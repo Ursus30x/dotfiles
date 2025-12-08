@@ -1,107 +1,147 @@
+/* ========================= */
+/*        COLOR SETUP        */
+/* ========================= */
+
+@define-color bg_main alpha(#0D0837, 0);
+@define-color bg_module alpha(#0D0837, 0.7);
+
+/* 0D0837 */
+
+@define-color primary #c0caf5;
+
+@define-color accent #E7136F;
+@define-color accent_dim rgba(0,0,0,0);
+@define-color accent_hover alpha(#BA1058, .5);
+@define-color accent_shadow alpha(#060614, .4);
+
+@define-color arch_hover #E7136F;
+
+
+/* ========================= */
+/*         WAYBAR UI         */
+/* ========================= */
+
 * {
-    /* `otf-font-awesome` and SpaceMono Nerd Font are required to be installed for icons */
-    font-family: "Fira Sans Semibold", FontAwesome, Roboto, Helvetica, Arial, sans-serif;
+    font-family: Arial, sans-serif;
     font-size: 15px;
     transition: background-color .3s ease-out;
 }
 
 window#waybar {
-    background: rgba(26, 27, 38, 0.75);
-    color: #c0caf5;
-    font-family: 
-        SpaceMono Nerd Font,
-        feather;
+    background: @bg_main;
+    color: @primary;
+    font-family: SpaceMono Nerd Font;
     transition: background-color .5s;
 }
 
 .modules-left,
 .modules-center,
-.modules-right
-{
-    background: rgba(0, 0, 8, .7);
-    margin: 5px 10px;
-    padding: 0 5px;
-    border-radius: 15px;
-}
-.modules-left {
-    padding: 0;
-}
-.modules-center {
-    padding: 0 10px;
+.modules-right {
+    background: @bg_module;
+    margin: 5px 5px;
+    border-radius: 10px;
+    padding: 0 7px;
 }
 
-#clock,
-#battery,
-#cpu,
-#memory,
-#disk,
-#temperature,
-#backlight,
-#network,
-#pulseaudio,
-#wireplumber,
-#custom-media,
-#tray,
-#mode,
-#idle_inhibitor,
-#scratchpad,
-#power-profiles-daemon,
-#language,
-#mpd {
-    padding: 0 10px;
-    border-radius: 15px;
+.modules-left * {
+    padding: 0 4px;
 }
 
-#clock:hover,
-#battery:hover,
-#cpu:hover,
-#memory:hover,
-#disk:hover,
-#temperature:hover,
-#backlight:hover,
-#network:hover,
-#pulseaudio:hover,
-#wireplumber:hover,
-#custom-media:hover,
-#tray:hover,
-#mode:hover,
-#idle_inhibitor:hover,
-#scratchpad:hover,
-#power-profiles-daemon:hover,
-#language:hover,
-#mpd:hover {
-    background: rgba(26, 27, 38, 0.9);
+.modules-center * {
+    padding: 0 1px;
 }
 
+.modules-right * {
+    padding: 0 4px;
+}
+
+
+/* ========================= */
+/*        WORKSPACES         */
+/* ========================= */
+
+workspaces {
+    padding: 0px 5px;
+}
 
 #workspaces button {
-  background: transparent;
-  font-family:
-    SpaceMono Nerd Font,
-    feather;
-  font-weight: 900;
-  font-size: 13pt;
-  color: #c0caf5;
-  border:none;
-  border-radius: 15px;
-}
-
-#workspaces button.active {
-    background: #13131d; 
+    all: unset;
+    padding: 0px 5px;
+    color: alpha(@accent, .4);
+    transition: all .2s ease;
 }
 
 #workspaces button:hover {
-  background: #11111b;
-  color: #cdd6f4;
-  box-shadow: none;
+    color: @accent_dim;
+    border: none;
+    text-shadow: 0px 0px 1.5px alpha(@accent, .5);
+    transition: all 1s ease;
+}
+
+#workspaces button.active {
+    color: @accent;
+    border: none;
+    text-shadow: 0px 0px 2px @accent_hover;
+}
+
+#workspaces button.empty {
+    color: @accent_dim;
+    border: none;
+    text-shadow: 0px 0px 1.5px @accent_shadow;
+}
+
+#workspaces button.empty:hover {
+    color: @accent_dim;
+    border: none;
+    text-shadow: 0px 0px 1.5px alpha(@accent, .5);
+    transition: all 1s ease;
+}
+
+#workspaces button.empty.active {
+    color: @accent;
+    border: none;
+    text-shadow: 0px 0px 2px alpha(@accent, .5);
+}
+
+
+/* ========================= */
+/*        CUSTOM ITEMS       */
+/* ========================= */
+
+#custom-separator {
+    font-size: 25px;
+    padding: 0 2px;
 }
 
 #custom-arch {
-    margin-left: 5px;
-    padding: 0 10px;
-    font-size: 25px;
+    padding-right: 5px;
+    font-size: 20px;
     transition: color .5s;
 }
+
 #custom-arch:hover {
-    color: #1793d1;
+    color: @arch_hover;
+}
+
+#power {
+    font-size: 16px;
+    padding: 0 3px;
+}
+
+#power * {
+    font-size: 16px;
+}
+
+#custom-power {
+    padding-right: 5px;
+    padding-left: 0px;
+}
+
+#custom-reboot,
+#custom-lock {
+    padding: 0 8px;
+}
+
+#custom-quit {
+    padding-right: 8px;
 }

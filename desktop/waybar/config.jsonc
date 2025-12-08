@@ -2,26 +2,27 @@
 {
     "layer": "top", // Waybar at top layer
     "position": "top", // Waybar position (top|bottom|left|right)
-    "height": 42, // Waybar height (to be removed for auto height)
     // "width": 1280, // Waybar width
-    "spacing": 4, // Gaps between modules (4px)
+    "spacing": 2, // Gaps between modules (2px)
     // Choose the order of the modules
     "modules-left": [
         "custom/arch",
-        "hyprland/workspaces"
+        "custom/pacman_updates",
+	    "pulseaudio",
     ],
     "modules-center": [
-        "hyprland/window"
+        "hyprland/workspaces"
     ],
     "modules-right": [
-        "pulseaudio",
         "cpu",
         "memory",
         "temperature",
-        "hyprland/language",
-        "clock"
+        "custom/separator",
+	    "clock",
+        "group/power"
     ],
     //Modules configuration
+    
 
     "include": "~/.config/waybar/modules.json"
 }

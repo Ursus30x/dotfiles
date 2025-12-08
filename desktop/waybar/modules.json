@@ -1,22 +1,67 @@
 {
+    "group/power": {
+      "orientation": "inherit",
+      "drawer": {
+        "transition-duration": 500,
+        "children-class": "power-child",
+        "transition-left-to-right": false
+      },
+      "modules": [
+        "custom/power", 
+        "custom/quit",
+        "custom/lock",
+        "custom/reboot"
+      ]
+    },
+    "custom/quit": {
+      "format": "󰗼",
+      "tooltip": true,
+      "tooltip-format": "Quit",
+      "on-click": "hyprctl dispatch exit"
+    },
+    "custom/lock": {
+      "format": "󰍁",
+      "tooltip": true,
+      "tooltip-format": "Lock",
+      "on-click": "hyprlock"
+    },
+    "custom/reboot": {
+      "format": "󰜉",
+      "tooltip": true,
+      "tooltip-format": "Reboot",
+      "on-click": "reboot"
+    },
+    "custom/power": {
+      "format": "",
+      "tooltip": true,
+      "tooltip-format": "Shutdown",
+      "on-click": "shutdown now"
+    },
     "custom/arch": {
         "format": "󰣇",
         "tooltip": true,
         "tooltip-format": "btw",
         "on-click": "wofi --show drun"
     },
-
-
     "hyprland/workspaces": {
-        "disable-scroll": true,
-        "all-outputs": true,
-        "warp-on-scroll": false,
-        "format": "{name}",
-        "format-icons": {
-            "urgent": "",
-            "active": "",
-            "default": ""
-        }
+            "format": "{icon}",
+            "format-icons": {
+                "active": "",
+                "default": "",
+                "empty": ""
+            },
+            "persistent-workspaces": {
+                "*": [ 1,2,3,4,5 ]
+            }
+    },
+    "custom/pacman_updates": {
+        "exec": "~/.config/waybar/pacman_updates.sh",
+        "format": "󰮯  {}",
+        "interval": 600,
+        "return-type": "json",
+        "on-click": "~/.config/waybar/pacman_update_run.sh",
+        "on-click-right": "~/.config/waybar/pacman_updates.sh"
+
     },
     "idle_inhibitor": {
         "format": "{icon}",
@@ -28,8 +73,8 @@
     "pulseaudio": {
         "format": "{icon}  {volume}%",
         "format-bluetooth": "{icon} {volume}%  {format_source}",
-        "format-bluetooth-muted": " {icon} {format_source}",
-        "format-muted": " {format_source}",
+        "format-bluetooth-muted": "󰝟 {icon} {format_source}",
+        "format-muted": "󰝟 ",
         "format-source": " {volume}%",
         "format-source-muted": "",
         "format-icons": {
@@ -39,18 +84,16 @@
             "phone": "",
             "portable": "",
             "car": "",
-            "default": ["", "", ""]
+            "default": ["󰕿", "󰖀", "󰕾"]
         },
         "on-click": "pwvucontrol"
     },
     "network": {
-        "format-wifi": "   {essid} ({signalStrength}%)",
-        "format-ethernet": "{ipaddr}/{cidr} ",
-        "tooltip-format": "{ifname} via {gwaddr} ",
-        "format-linked": "{ifname} (No IP) ",
+        "format-wifi": "   {signalStrength}%",
+	    "format-ethernet": "{ipaddr}/{cidr} ",
+        "tooltip-format": "{essid}",
         "format-disconnected": "Disconnected ⚠",
-	"on-click": "sh ~/scripts/rofi-wifi-menu/rofi-wifi-menu.sh"
-	 
+	"on-click": "kitty -e bash -c impala"
     },
     "cpu": {
         "format": "  {usage}%",
@@ -58,7 +101,8 @@
     },
     "memory": {
         "format": "  {}%",
-	"tooltip": true
+        "interval": 5,
+	    "tooltip": true
     },
     "temperature": {
         "interval": 10,
@@ -70,8 +114,26 @@
     "hyprland/language": {
        "format": "  {}",
        "format-en": "EN",
-       "format-ru": "RU"
+       "format-ru": "RU",
+       "format-pl": "PL"
     },
+    "custom/power_now": {
+        "exec": "~/.config/waybar/power_now.sh",
+        "interval": 5,
+        "format": "󱐋 {} W"
+    },
+    "custom/separator": {
+    	"format": " "
+    },
+    "backlight": {
+		"format": "{icon} {percent}%",
+		"format-icons": [
+			"", "", "", "", "", "", "", "", ""
+		],
+    		"on-scroll-up": "brightnessctl set +3238",
+    		"on-scroll-down": "brightnessctl set 3238-",
+		"tooltip": false
+	},
     "battery": {
         "states": {
             "warning": 30,
@@ -79,16 +141,16 @@
         },
         "format": "{icon}  {capacity}%",
         "format-full": "{icon}  {capacity}%",
-        "format-charging": "  {capacity}%",
+        "format-charging": "󰂄  {capacity}%",
         "format-plugged": "  {capacity}%",
         "format-alt": "{time}  {icon}",
-        "format-icons": ["", "", "", "", ""]
+        "format-icons": ["󰁺", "󰁻", "󰁼", "󰁽", "󰁾", "󰁿", "󰂀", "󰂁", "󰂂", "󰁹"]
     },
     "battery#bat2": {
         "bat": "BAT2"
     },
     "clock": {
-        "format": "{:%H:%M | %e %B} ",
+        "format": "{:%H:%M}",
         "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
         "format-alt": "{:%Y-%m-%d}"
     }
