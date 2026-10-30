@@ -17,7 +17,9 @@
         "hyprland/workspaces"
     ],
     "modules-right": [
+        "custom/power_profile",
         "cpu",
+        "custom/igpu",
         "memory",
         "temperature",
 	    "custom/separator",
@@ -28,7 +30,5 @@
         "group/power"
     ],
     //Modules configuration
-    
-
     "include": "~/.config/waybar/modules.json"
 }

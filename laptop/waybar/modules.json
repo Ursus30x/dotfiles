@@ -7,7 +7,7 @@
         "transition-left-to-right": false
       },
       "modules": [
-        "custom/power", 
+        "custom/power",
         "custom/quit",
         "custom/lock",
         "custom/reboot"
@@ -37,11 +37,28 @@
       "tooltip-format": "Shutdown",
       "on-click": "shutdown now"
     },
+    "custom/power_profile": {
+        "exec": "~/.config/waybar/power_profile.sh",
+        "interval": 2,
+        "format": "{}",
+        "tooltip": true,
+        "tooltip-format": "Power Profile: {}",
+        "on-click": "~/.config/waybar/power_profile.sh next",
+        "signal": 8
+    },
     "custom/arch": {
         "format": "󰣇",
         "tooltip": true,
         "tooltip-format": "btw",
         "on-click": "wofi --show drun"
+    },
+    "custom/igpu": {
+        "exec": "cat /sys/class/drm/card*/device/gpu_busy_percent | head -n 1",
+        "interval": 1,
+        "format": "󰢮  {}%",
+        "tooltip": true,
+        "tooltip-format": "iGPU Utilization",
+        "on-click": "kitty -e bash -c amdgpu_top"
     },
     "hyprland/workspaces": {
             "format": "{icon}",
@@ -93,22 +110,25 @@
 	    "format-ethernet": "{ipaddr}/{cidr} ",
         "tooltip-format": "{essid}",
         "format-disconnected": "Disconnected ⚠",
-	"on-click": "kitty -e bash -c impala"
+	    "on-click": "kitty -e bash -c impala"
     },
     "cpu": {
-        "format": "  {usage}%",
-        "tooltip": true
+        "format": "{max_frequency}GHz    {usage}%",
+        "tooltip": true,
+        "on-click": "kitty -e bash -c btop"
     },
     "memory": {
         "format": "  {}%",
-	"tooltip": true
+	    "tooltip": true,
+        "on-click": "kitty -e bash -c btop"
     },
     "temperature": {
-        "interval": 10,
-        "hwmon-path": "/sys/class/hwmon/hwmon3/temp1_input",
+        "interval": 1,
+        "hwmon-path": "/sys/devices/pci0000:00/0000:00:18.3/hwmon/hwmon6/temp1_input",
         "critical-threshold": 85,
         "format-critical": " {temperatureC}°C",
-        "format": " {temperatureC}°C"
+        "format": " {temperatureC}°C",
+        "on-click": "kitty -e bash -c btop"
     },
     "hyprland/language": {
        "format": "  {}",
@@ -118,7 +138,7 @@
     },
     "custom/power_now": {
         "exec": "~/.config/waybar/power_now.sh",
-        "interval": 5,
+        "interval": 1,
         "format": "󱐋 {} W"
     },
     "custom/separator": {
