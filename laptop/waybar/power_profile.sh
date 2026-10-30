@@ -46,22 +46,24 @@ if [ "$1" = "next" ] || [ "$1" = "toggle" ]; then
     exit 0
 fi
 
-# Print current profile with requested mapping:
-# performance -> performance
-# balanced    -> balanced
-# power-saver -> saver
+# Current profile mapped to progress bar glyphs:
+# saver       -> empty:     nf-extra-progress_empty_left + nf-extra-progress_empty_right (U+EE00 U+EE02)
+# balanced    -> half full: nf-extra-progress_full_left  + nf-extra-progress_empty_right (U+EE03 U+EE02)
+# performance -> full:      nf-extra-progress_full_left  + nf-extra-progress_full_right  (U+EE03 U+EE05)
 current=$(powerprofilesctl get 2>/dev/null)
 case "$current" in
     "power-saver")
-        echo "saver"
+        icon="\uee00\uee02"
         ;;
     "balanced")
-        echo "balanced"
+        icon="\uee03\uee02"
         ;;
     "performance")
-        echo "performance"
+        icon="\uee03\uee05"
         ;;
     *)
-        echo "${current:-unknown}"
+        icon="\uee00\uee02"
         ;;
 esac
+
+printf '{"text":"%b","tooltip":"Power Profile: %s","class":"%s"}\n' "$icon" "$current" "$current"

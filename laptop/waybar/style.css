@@ -145,3 +145,7 @@ workspaces {
 #custom-quit {
     padding-right: 8px;
 }
+
+#custom-power_profile {
+    font-family: "SpaceMono Nerd Font";
+}

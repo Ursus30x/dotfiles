@@ -40,9 +40,8 @@
     "custom/power_profile": {
         "exec": "~/.config/waybar/power_profile.sh",
         "interval": 2,
-        "format": "{}",
-        "tooltip": true,
-        "tooltip-format": "Power Profile: {}",
+        "return-type": "json",
+        "format": "{} ",
         "on-click": "~/.config/waybar/power_profile.sh next",
         "signal": 8
     },
@@ -55,7 +54,7 @@
     "custom/igpu": {
         "exec": "cat /sys/class/drm/card*/device/gpu_busy_percent | head -n 1",
         "interval": 1,
-        "format": "󰢮  {}%",
+        "format": "{}%  󰢮",
         "tooltip": true,
         "tooltip-format": "iGPU Utilization",
         "on-click": "kitty -e bash -c amdgpu_top"
@@ -113,12 +112,12 @@
 	    "on-click": "kitty -e bash -c impala"
     },
     "cpu": {
-        "format": "{max_frequency}GHz    {usage}%",
+        "format": "{max_frequency}GHz  {usage}%  ",
         "tooltip": true,
         "on-click": "kitty -e bash -c btop"
     },
     "memory": {
-        "format": "  {}%",
+        "format": "{}%  ",
 	    "tooltip": true,
         "on-click": "kitty -e bash -c btop"
     },
@@ -126,12 +125,12 @@
         "interval": 1,
         "hwmon-path": "/sys/devices/pci0000:00/0000:00:18.3/hwmon/hwmon6/temp1_input",
         "critical-threshold": 85,
-        "format-critical": " {temperatureC}°C",
-        "format": " {temperatureC}°C",
+        "format-critical": "{temperatureC}°C  ",
+        "format": "{temperatureC}°C  ",
         "on-click": "kitty -e bash -c btop"
     },
     "hyprland/language": {
-       "format": "  {}",
+       "format": "{}  ",
        "format-en": "EN",
        "format-ru": "RU",
        "format-pl": "PL"
@@ -139,7 +138,7 @@
     "custom/power_now": {
         "exec": "~/.config/waybar/power_now.sh",
         "interval": 1,
-        "format": "󱐋 {} W"
+        "format": "{} W  󱐋"
     },
     "custom/separator": {
     	"format": " "
@@ -158,10 +157,10 @@
             "warning": 30,
             "critical": 15
         },
-        "format": "{icon}  {capacity}%",
-        "format-full": "{icon}  {capacity}%",
-        "format-charging": "󰂄  {capacity}%",
-        "format-plugged": "  {capacity}%",
+        "format": "{capacity}%  {icon}",
+        "format-full": "{capacity}%  {icon}",
+        "format-charging": "{capacity}%  󰂄",
+        "format-plugged": "{capacity}%  ",
         "format-alt": "{time}  {icon}",
         "format-icons": ["󰁺", "󰁻", "󰁼", "󰁽", "󰁾", "󰁿", "󰂀", "󰂁", "󰂂", "󰁹"]
     },
