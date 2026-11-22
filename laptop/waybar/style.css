@@ -146,6 +146,36 @@ workspaces {
     padding-right: 8px;
 }
 
+/* ========================= */
+/*       MODULE SIZES        */
+/* ========================= */
+
+/* Same font-relative width for all <value> <emoji> segments */
+#custom-pacman_updates,
+#backlight,
+#pulseaudio,
+#network,
+#custom-igpu,
+#memory,
+#temperature,
+#custom-power_now,
+#battery {
+    min-width: 3.2em;
+}
+
+#cpu {
+    min-width: 5em;
+}
+
 #custom-power_profile {
     font-family: "SpaceMono Nerd Font";
+    min-width: 2em;
+}
+
+#clock {
+    min-width: 3.8em;
+}
+
+#custom-arch {
+    min-width: 1.8em;
 }
