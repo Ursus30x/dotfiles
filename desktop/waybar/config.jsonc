@@ -15,6 +15,7 @@
     ],
     "modules-right": [
         "cpu",
+        "custom/gpu",
         "memory",
         "temperature",
         "custom/separator",

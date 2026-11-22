@@ -63,6 +63,14 @@
         "on-click-right": "~/.config/waybar/pacman_updates.sh"
 
     },
+    "custom/gpu": {
+        "exec": "~/.config/waybar/gpu.sh",
+        "interval": 2,
+        "return-type": "json",
+        "format": "{}",
+        "tooltip": true,
+        "on-click": "kitty -e bash -c btop"
+    },
     "idle_inhibitor": {
         "format": "{icon}",
         "format-icons": {
@@ -96,23 +104,26 @@
 	"on-click": "kitty -e bash -c impala"
     },
     "cpu": {
-        "format": "  {usage}%",
-        "tooltip": true
+        "format": "{max_frequency}GHz  {usage}%  ",
+        "tooltip": true,
+        "on-click": "kitty -e bash -c btop"
     },
     "memory": {
-        "format": "  {}%",
+        "format": "{}%  ",
         "interval": 5,
-	    "tooltip": true
+	    "tooltip": true,
+        "on-click": "kitty -e bash -c btop"
     },
     "temperature": {
-        "interval": 10,
-        "hwmon-path": "/sys/class/hwmon/hwmon3/temp1_input",
+        "interval": 1,
+        "hwmon-path": "/sys/devices/pci0000:00/0000:00:18.3/hwmon/hwmon4/temp1_input",
         "critical-threshold": 85,
-        "format-critical": " {temperatureC}°C",
-        "format": " {temperatureC}°C"
+        "format-critical": "{temperatureC}°C  ",
+        "format": "{temperatureC}°C  ",
+        "on-click": "kitty -e bash -c btop"
     },
     "hyprland/language": {
-       "format": "  {}",
+       "format": "{}  ",
        "format-en": "EN",
        "format-ru": "RU",
        "format-pl": "PL"
